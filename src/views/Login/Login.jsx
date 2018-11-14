@@ -13,6 +13,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Password from "components/Password/Password.jsx";
 
+import image from "assets/img/sidebar-2.jpg";
 
 const styles = {
   gridItem: {
@@ -36,6 +37,18 @@ const styles = {
   },
   buttonSubmit: {
     margin: "0 auto"
+  },
+  background:{
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    zIndex: '1',
+    display: 'block',
+    position: 'absolute',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundImage: "url(" + image + ")"
   }
 };
 
@@ -65,7 +78,7 @@ class Login extends React.Component {
     const { classes } = this.props;
     if (redirectToReferrer) return <Redirect to={from} />;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={classes.background}>
         <GridContainer>
           <GridItem style={styles.gridItem} xs={12} sm={12} md={4}>
             <Card>

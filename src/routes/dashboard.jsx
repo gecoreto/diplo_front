@@ -28,54 +28,54 @@ const dashboardRoutes = [
     component: DashboardPage
   },
   {
-    path: "/dashboard/user",
-    sidebarName: "User Profile",
-    navbarName: "Profile",
-    icon: Person,
-    component: UserProfile
-  },
-  {
-    path: "/dashboard/table",
-    sidebarName: "Table List",
-    navbarName: "Table List",
-    icon: "content_paste",
-    component: TableList
-  },
-  {
-    path: "/dashboard/typography",
-    sidebarName: "Typography",
-    navbarName: "Typography",
-    icon: LibraryBooks,
-    component: Typography
-  },
-  {
-    path: "/dashboard/icons",
-    sidebarName: "Icons",
-    navbarName: "Icons",
-    icon: BubbleChart,
-    component: Icons
-  },
-  {
-    path: "/dashboard/maps",
-    sidebarName: "Maps",
-    navbarName: "Map",
-    icon: LocationOn,
-    component: Maps
-  },
-  {
-    path: "/dashboard/notifications",
-    sidebarName: "Notifications",
-    navbarName: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage
-  },
-  {
     path: "/dashboard/checktrend",
     sidebarName: "Consultar tendencia",
     navbarName: "Consultar tendencia",
     icon: TrendingUp,
     component: CheckTrend
   },
+  {
+    path: "/dashboard/user",
+    sidebarName: "Perfil de usuario",
+    navbarName: "Perfil de usuario",
+    icon: Person,
+    component: UserProfile
+  },
+  // {
+  //   path: "/dashboard/table",
+  //   sidebarName: "Table List",
+  //   navbarName: "Table List",
+  //   icon: "content_paste",
+  //   component: TableList
+  // },
+  // {
+  //   path: "/dashboard/typography",
+  //   sidebarName: "Typography",
+  //   navbarName: "Typography",
+  //   icon: LibraryBooks,
+  //   component: Typography
+  // },
+  // {
+  //   path: "/dashboard/icons",
+  //   sidebarName: "Icons",
+  //   navbarName: "Icons",
+  //   icon: BubbleChart,
+  //   component: Icons
+  // },
+  // {
+  //   path: "/dashboard/maps",
+  //   sidebarName: "Maps",
+  //   navbarName: "Map",
+  //   icon: LocationOn,
+  //   component: Maps
+  // },
+  // {
+  //   path: "/dashboard/notifications",
+  //   sidebarName: "Notifications",
+  //   navbarName: "Notifications",
+  //   icon: Notifications,
+  //   component: NotificationsPage
+  // },
   // {
   //   path: "/dashboard/upgrade-to-pro",
   //   sidebarName: "Upgrade To PRO",

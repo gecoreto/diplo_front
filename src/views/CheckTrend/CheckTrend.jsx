@@ -82,7 +82,7 @@ class CheckTrend extends React.Component {
         this.onChangeStep = this.onChangeStep.bind(this);
         this.handleSubmitForms = this.handleSubmitForms.bind(this);
     }
-    
+
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
     };
@@ -159,7 +159,7 @@ class CheckTrend extends React.Component {
                                                 id="addProduct"
                                                 inputProps={{
                                                     value: addProduct,
-                                                    onChange: this.handleChange('addProduct')
+                                                    onChange: this.handleChange('addProduct')                                                    
                                                 }}
                                                 formControlProps={{
                                                     fullWidth: true
@@ -249,7 +249,7 @@ class CheckTrend extends React.Component {
                                                     />
                                                 </GridItem>
                                             </GridContainer>
-                                            <Button onClick={(e) => { this.onChangeStep(e, true) }} type="button" color="warning">
+                                            <Button variant="outlined" onClick={(e) => { this.onChangeStep(e, true) }} type="button" color="warning">
                                                 Regresar
                                             </Button>
                                             <Button disabled={(!country || !deparment || !city)} style={{ marginLeft: '10px' }} type="submit" color="info">
@@ -262,7 +262,7 @@ class CheckTrend extends React.Component {
                         </GridContainer>
                     ),
                     3: (
-                        <ResultCharts />
+                        <ResultCharts state={this.state} />
                     )
                 }[currentStep]}
             </div>

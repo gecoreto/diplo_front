@@ -6,6 +6,7 @@ import ChartistGraph from "react-chartist";
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import AccessTime from "@material-ui/icons/AccessTime";
 // core components
 import GridItem from "components/Grid/GridItem.jsx";
@@ -14,6 +15,8 @@ import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+//Google charts
+import Chart from 'react-google-charts';
 
 import {
     dailySalesChart,
@@ -30,34 +33,74 @@ class ResultCharts extends React.Component {
         return (
             <div>
                 <GridContainer>
-                    <GridItem xs={12} sm={12} md={4}>
+                    <GridItem xs={12} sm={12} md={3}>
                         <Card chart>
-                            <CardHeader color="success">
-                                <ChartistGraph
-                                    className="ct-chart"
-                                    data={dailySalesChart.data}
-                                    type="Line"
-                                    options={dailySalesChart.options}
-                                    listener={dailySalesChart.animation}
+                            <CardHeader color="info">
+                                Tendencias en productos
+                            </CardHeader>
+                            <CardBody>
+                                <h4 className={classes.cardTitle}> Papa</h4>
+                                <p className={classes.cardCategory}>
+                                    <span className={classes.successText}>
+                                        <ArrowUpward className={classes.upArrowCardCategory} /> 30%
+                                    </span>{" "}
+                                    Aumento en las exportaciones.
+                                    </p>
+                                <h4 className={classes.cardTitle}> Yuca</h4>
+                                <p className={classes.cardCategory}>
+                                    <span className={classes.dangerText}>
+                                        <ArrowDownward className={classes.upArrowCardCategory} /> 3%
+                                    </span>{" "}
+                                    Aumento en las exportaciones.
+                                    </p>
+                            </CardBody>
+                        </Card>
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={9}>
+                        <Card chart>
+                            <CardHeader color="info">
+                                <Chart
+                                    width={'100%'}
+                                    height={'100%'}
+                                    chartType="ColumnChart"
+                                    loader={<div>Loading Chart</div>}
+                                    data={[
+                                        ['City', '2010 Population', '2000 Population'],
+                                        ['New York City, NY', 8175000, 8008000],
+                                        ['Los Angeles, CA', 3792000, 3694000],
+                                        ['Chicago, IL', 2695000, 2896000],
+                                        ['Houston, TX', 2099000, 1953000],
+                                        ['Philadelphia, PA', 1526000, 1517000],
+                                    ]}
+                                    options={{
+                                        title: 'Population of Largest U.S. Cities',
+                                        chartArea: { width: '30%' },
+                                        hAxis: {
+                                            title: 'Total Population',
+                                            minValue: 0,
+                                        },
+                                        vAxis: {
+                                            title: 'City',
+                                        },
+                                    }}
+                                    legendToggle
                                 />
                             </CardHeader>
                             <CardBody>
-                                <h4 className={classes.cardTitle}>Daily Sales</h4>
+                                <h4 className={classes.cardTitle}>Tendencias en importaciones</h4>
                                 <p className={classes.cardCategory}>
                                     <span className={classes.successText}>
                                         <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{" "}
-                                    increase in today sales.
-                </p>
+                                    </span>{" "}
+                                    Aumento en las importaciones de hoy.
+                                    </p>
                             </CardBody>
                             <CardFooter chart>
                                 <div className={classes.stats}>
-                                    <AccessTime /> updated 4 minutes ago
-                </div>
+                                    <AccessTime /> Actualizado 4 minutos atras
+                                </div>
                             </CardFooter>
                         </Card>
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
                         <Card chart>
                             <CardHeader color="warning">
                                 <ChartistGraph
@@ -70,41 +113,21 @@ class ResultCharts extends React.Component {
                                 />
                             </CardHeader>
                             <CardBody>
-                                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+                                <h4 className={classes.cardTitle}>Ventas en este año</h4>
                                 <p className={classes.cardCategory}>
-                                    Last Campaign Performance
-                </p>
+                                    Rendimiento de las ventas
+                                </p>
                             </CardBody>
                             <CardFooter chart>
                                 <div className={classes.stats}>
-                                    <AccessTime /> campaign sent 2 days ago
+                                    <AccessTime /> Actualizado 1 minuto atras
                 </div>
                             </CardFooter>
                         </Card>
+
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
-                        <Card chart>
-                            <CardHeader color="danger">
-                                <ChartistGraph
-                                    className="ct-chart"
-                                    data={completedTasksChart.data}
-                                    type="Line"
-                                    options={completedTasksChart.options}
-                                    listener={completedTasksChart.animation}
-                                />
-                            </CardHeader>
-                            <CardBody>
-                                <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                                <p className={classes.cardCategory}>
-                                    Last Campaign Performance
-                </p>
-                            </CardBody>
-                            <CardFooter chart>
-                                <div className={classes.stats}>
-                                    <AccessTime /> campaign sent 2 days ago
-                </div>
-                            </CardFooter>
-                        </Card>
+                    <GridItem xs={12} sm={12} md={3} />
+                    <GridItem xs={12} sm={12} md={9}>
                     </GridItem>
                 </GridContainer>
             </div>

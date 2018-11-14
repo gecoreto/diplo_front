@@ -80,7 +80,7 @@ class Login extends React.Component {
                       labelText="Email"
                       id="email"
                       inputProps={{
-                        value: this.state.value,
+                        value: this.state.email,
                         onChange: this.handleChange('email')
                       }}
                       formControlProps={{

@@ -71,12 +71,12 @@ class App extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={dashboardRoutes}
-          logoText={"Creative Tim"}
+          logoText={"ExportsData"}
           logo={logo}
           image={image}
           handleDrawerToggle={this.handleDrawerToggle}
           open={this.state.mobileOpen}
-          color="blue"
+          color="purple"
           {...rest}
         />
         <div className={classes.mainPanel} ref="mainPanel">
@@ -93,7 +93,7 @@ class App extends React.Component {
           ) : (
             <div className={classes.map}>{switchRoutes}</div>
           )}
-          {this.getRoute() ? <Footer /> : null}
+          {/* {this.getRoute() ? <Footer /> : null} */}
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 {
-  "name": "material-dashboard-react",
+  "name": "exportData",
   "version": "1.5.0",
   "description": "Material Dashboard React. Coded by Creative Tim",
   "private": false,
@@ -21,7 +21,8 @@
     "react-google-maps": "9.4.5",
     "react-router-dom": "4.3.1",
     "react-scripts": "1.1.5",
-    "react-swipeable-views": "0.12.17"
+    "react-swipeable-views": "0.12.17",
+    "webpack-bundle-tracker": "^0.4.2-beta"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
   },
-  "homepage": "https://creativetimofficial.github.io/material-dashboard-react/#/dashboard",
+  "homepage": ".",
   "optionalDependencies": {
     "babel-eslint": "7.2.3",
     "eslint": "4.19.1",

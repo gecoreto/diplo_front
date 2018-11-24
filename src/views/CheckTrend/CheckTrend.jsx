@@ -54,7 +54,7 @@ class CheckTrend extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentStep: 1,
+            currentStep: 3,
             addProduct: '',
             country: '',
             deparment: '',

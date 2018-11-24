@@ -57,7 +57,7 @@ class ResultCharts extends React.Component {
                         </Card>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={9}>
-                        <Card chart>
+                        {/* <Card chart>
                             <CardHeader color="info">
                                 <Chart
                                     width={'100%'}
@@ -100,17 +100,20 @@ class ResultCharts extends React.Component {
                                     <AccessTime /> Actualizado 4 minutos atras
                                 </div>
                             </CardFooter>
-                        </Card>
+                        </Card> */}
                         <Card chart>
-                            <CardHeader color="warning">
-                                <ChartistGraph
+                            <CardHeader style={{height: "800px"}} color="info">
+                                {/* <ChartistGraph
                                     className="ct-chart"
                                     data={emailsSubscriptionChart.data}
                                     type="Bar"
                                     options={emailsSubscriptionChart.options}
                                     responsiveOptions={emailsSubscriptionChart.responsiveOptions}
                                     listener={emailsSubscriptionChart.animation}
-                                />
+                                /> */}
+                                <iframe frameBorder="0" width="100%" height="800px" src="http://127.0.0.1:8000/graficas/uno">
+                                    <p>Your browser does not support iframes.</p>
+                                </iframe>
                             </CardHeader>
                             <CardBody>
                                 <h4 className={classes.cardTitle}>Ventas en este año</h4>

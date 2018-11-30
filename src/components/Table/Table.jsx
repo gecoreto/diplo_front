@@ -36,6 +36,8 @@ function CustomTable({ ...props }) {
             return (
               <TableRow key={key}>
                 {prop.map((prop, key) => {
+                  if (key === 0)
+                    return null;
                   return (
                     <TableCell className={classes.tableCell} key={key}>
                       {prop}

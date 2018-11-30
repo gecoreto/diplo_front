@@ -53,14 +53,43 @@ class CheckTrend extends React.Component {
 
     constructor(props) {
         super(props);
+        const productsDatasets = [
+            ['acuicultura', 'Pescados'],
+            ['aguacate', 'Aguacate'],
+            ['algodon', 'Algodón'],
+            ['arroz', 'Arroz'],
+            ['avicultura', 'Avicultura'],
+            ['banano', 'Banano'],
+            ['cacao', 'Cacao'],
+            ['cafe', 'Café'],
+            ['caucho', 'Caucho'],
+            ['flores', 'Flores'],
+            ['maiz', 'Maíz'],
+            ['mango', 'Mango'],
+            ['papa', 'Papa'],
+            ['piña', 'Piña'],
+            ['platano', 'Platano'],
+            ['yuca', 'Yuca'],
+
+        ];
+        productsDatasets.sort(([key, valOne], [keyTwo, valTwo]) => {
+            valOne = valOne.toUpperCase();
+            valTwo = valTwo.toUpperCase();
+            if (valOne < valTwo)
+                return -1;
+            if (valOne < valTwo)
+                return 1;
+            return 0;
+        });
         this.state = {
-            currentStep: 3,
+            currentStep: 1,
             addProduct: '',
             country: '',
             deparment: '',
             city: '',
             redirectToReferrer: false,
             productsTable: [],
+            productsDatasets,
             countries: [
                 [1, 'Colombia'],
                 [2, 'Panama'],
@@ -89,7 +118,8 @@ class CheckTrend extends React.Component {
 
     handleSubmitForms(event) {
         event.preventDefault();
-        const { addProduct, productsTable, currentStep } = this.state;
+        const { addProduct, productsTable, currentStep, productsDatasets } = this.state;
+        const [valP, labelProduct] = productsDatasets.find(([key]) => key === addProduct);
         switch (currentStep) {
             case 1:
                 this.setState({
@@ -98,6 +128,7 @@ class CheckTrend extends React.Component {
                         ...productsTable,
                         [
                             addProduct,
+                            labelProduct,
                             <Tooltip
                                 id="tooltip-top-start"
                                 title="Eliminar"
@@ -154,17 +185,29 @@ class CheckTrend extends React.Component {
                                     </CardHeader>
                                     <CardBody profile>
                                         <form onSubmit={this.handleSubmitForms}>
-                                            <CustomInput
-                                                labelText="Ej: yuca"
+                                            <CustomSelect
+                                                labelText="Selecciona un producto"
                                                 id="addProduct"
                                                 inputProps={{
                                                     value: addProduct,
-                                                    onChange: this.handleChange('addProduct')                                                    
+                                                    onChange: this.handleChange('addProduct')
                                                 }}
                                                 formControlProps={{
                                                     fullWidth: true
                                                 }}
+                                                options={this.state.productsDatasets}
                                             />
+                                            {/* <CustomInput
+                                                labelText="Ej: yuca"
+                                                id="addProduct"
+                                                inputProps={{
+                                                    value: addProduct,
+                                                    onChange: this.handleChange('addProduct')
+                                                }}
+                                                formControlProps={{
+                                                    fullWidth: true
+                                                }}
+                                            /> */}
                                             <p className={classes.description}>
                                                 Ingresa uno a uno los productos que quieres consultar.
                                             </p>
@@ -195,7 +238,7 @@ class CheckTrend extends React.Component {
                             </GridItem>
                         </GridContainer>
                     ),
-                    2: (
+                    20000: (
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={12}>
                                 <Card>
@@ -261,8 +304,8 @@ class CheckTrend extends React.Component {
                             </GridItem>
                         </GridContainer>
                     ),
-                    3: (
-                        <ResultCharts state={this.state} />
+                    2: (
+                        <ResultCharts state={this.state} onChangeStep={this.onChangeStep} />
                     )
                 }[currentStep]}
             </div>

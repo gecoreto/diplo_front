@@ -38,7 +38,7 @@ const styles = {
   buttonSubmit: {
     margin: "0 auto"
   },
-  background:{
+  background: {
     top: '0',
     left: '0',
     width: '100%',
@@ -69,6 +69,11 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     // console.log(this.state)
+    if (this.state.email.indexOf("admin") > -1) {
+      sessionStorage.setItem('isAdmin', "true")
+    } else {
+      sessionStorage.removeItem('isAdmin')
+    }
     this.setState({ redirectToReferrer: true });
   }
 

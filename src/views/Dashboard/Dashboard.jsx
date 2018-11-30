@@ -39,10 +39,13 @@ import {
 } from "variables/charts.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import colombia from "assets/img/colombia.svg";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 
 class Dashboard extends React.Component {
   state = {
-    value: 0
+    value: 0,
+    isAdmin: !!sessionStorage.getItem('isAdmin')
   };
   handleChange = (event, value) => {
     this.setState({ value });
@@ -53,227 +56,227 @@ class Dashboard extends React.Component {
   };
   render() {
     const { classes } = this.props;
+    const { isAdmin } = this.state;
     return (
       <div>
-        <GridContainer>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="warning" stats icon>
-                <CardIcon color="warning">
-                  <Icon>content_copy</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Used Space</p>
-                <h3 className={classes.cardTitle}>
-                  49/50 <small>GB</small>
-                </h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                    Get more space
-                  </a>
+        {(isAdmin) ?
+          <div>
+            <GridContainer>
+              <GridItem xs={12} sm={6} md={4}>
+                <Card>
+                  <CardHeader color="info" stats icon>
+                    <CardIcon color="info">
+                      <Accessibility />
+                    </CardIcon>
+                    <p className={classes.cardCategory}>Usuarios Registrados</p>
+                    <h3 className={classes.cardTitle}>120</h3>
+                  </CardHeader>
+                  <CardFooter stats>
+                    <div className={classes.stats}>
+                      <Update />
+                      Just Updated
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="success" stats icon>
-                <CardIcon color="success">
-                  <Store />
-                </CardIcon>
-                <p className={classes.cardCategory}>Revenue</p>
-                <h3 className={classes.cardTitle}>$34,245</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem xs={12} sm={6} md={4}>
+                <Card>
+                  <CardHeader color="success" stats icon>
+                    <CardIcon color="success">
+                      <Store />
+                    </CardIcon>
+                    <p className={classes.cardCategory}>Incidencias resueltas</p>
+                    <h3 className={classes.cardTitle}>10</h3>
+                  </CardHeader>
+                  <CardFooter stats>
+                    <div className={classes.stats}>
+                      <DateRange />
+                      Últimas 24 horas
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem xs={12} sm={6} md={4}>
+                <Card>
+                  <CardHeader color="danger" stats icon>
+                    <CardIcon color="danger">
+                      <Icon>info_outline</Icon>
+                    </CardIcon>
+                    <p className={classes.cardCategory}>Incidencias por solucionar</p>
+                    <h3 className={classes.cardTitle}>4</h3>
+                  </CardHeader>
+                  <CardFooter stats>
+                    <div className={classes.stats}>
+                      <DateRange />
+                      Últimas 24 horas
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <Accessibility />
-                </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Update />
-                  Just Updated
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="success">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={dailySalesChart.data}
-                  type="Line"
-                  options={dailySalesChart.options}
-                  listener={dailySalesChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Daily Sales</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} /> 55%
+                  </CardFooter>
+                </Card>
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={4}>
+                <Card chart>
+                  <CardHeader color="success">
+                    <ChartistGraph
+                      className="ct-chart"
+                      data={dailySalesChart.data}
+                      type="Line"
+                      options={dailySalesChart.options}
+                      listener={dailySalesChart.animation}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>Ventas diarias</h4>
+                    <p className={classes.cardCategory}>
+                      <span className={classes.successText}>
+                        <ArrowUpward className={classes.upArrowCardCategory} /> 55%
                   </span>{" "}
-                  increase in today sales.
+                      Incremento de las ventas en los ultimos dias.
                 </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
+                  </CardBody>
+                  <CardFooter chart>
+                    <div className={classes.stats}>
+                      <AccessTime /> Recien actualizado
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="warning">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={emailsSubscriptionChart.data}
-                  type="Bar"
-                  options={emailsSubscriptionChart.options}
-                  responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                  listener={emailsSubscriptionChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <Card chart>
+                  <CardHeader color="warning">
+                    <ChartistGraph
+                      className="ct-chart"
+                      data={emailsSubscriptionChart.data}
+                      type="Bar"
+                      options={emailsSubscriptionChart.options}
+                      responsiveOptions={emailsSubscriptionChart.responsiveOptions}
+                      listener={emailsSubscriptionChart.animation}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>Subscripcion de email</h4>
+                    <p className={classes.cardCategory}>
+                      Rendimiento de la última campaña
                 </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
+                  </CardBody>
+                  <CardFooter chart>
+                    <div className={classes.stats}>
+                      <AccessTime /> Campaña enviada hace 2 días
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="danger">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={completedTasksChart.data}
-                  type="Line"
-                  options={completedTasksChart.options}
-                  listener={completedTasksChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <Card chart>
+                  <CardHeader color="danger">
+                    <ChartistGraph
+                      className="ct-chart"
+                      data={completedTasksChart.data}
+                      type="Line"
+                      options={completedTasksChart.options}
+                      listener={completedTasksChart.animation}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>Tareas completadas</h4>
+                    <p className={classes.cardCategory}>
+                      Rendimiento de la última campaña
                 </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
+                  </CardBody>
+                  <CardFooter chart>
+                    <div className={classes.stats}>
+                      <AccessTime /> Campaña enviada hace 2 días
                 </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={6}>
-            <CustomTabs
-              title="Tasks:"
-              headerColor="primary"
-              tabs={[
-                {
-                  tabName: "Bugs",
-                  tabIcon: BugReport,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0, 3]}
-                      tasksIndexes={[0, 1, 2, 3]}
-                      tasks={bugs}
-                    />
-                  )
-                },
-                {
-                  tabName: "Website",
-                  tabIcon: Code,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0]}
-                      tasksIndexes={[0, 1]}
-                      tasks={website}
-                    />
-                  )
-                },
-                {
-                  tabName: "Server",
-                  tabIcon: Cloud,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[1]}
-                      tasksIndexes={[0, 1, 2]}
-                      tasks={server}
-                    />
-                  )
-                }
-              ]}
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <Card>
-              <CardHeader color="warning">
-                <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-                <p className={classes.cardCategoryWhite}>
-                  New employees on 15th September, 2016
+                  </CardFooter>
+                </Card>
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={8}>
+                <Card>
+                  <CardHeader color="primary">
+                    <h4 className={classes.cardTitleWhite}>Ultimos usuarios registrados</h4>
+                    <p className={classes.cardCategoryWhite}>
+                      Nuevos usuarios en las últimas 24 horas.
                 </p>
-              </CardHeader>
-              <CardBody>
-                <Table
-                  tableHeaderColor="warning"
-                  tableHead={["ID", "Name", "Salary", "Country"]}
-                  tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                  ]}
-                />
-              </CardBody>
-            </Card>
-          </GridItem>
-        </GridContainer>
+                  </CardHeader>
+                  <CardBody>
+                    <Table
+                      tableHeaderColor="warning"
+                      tableHead={["Nombre", "País"]}
+                      tableData={[
+                        ["1", "Dakota Rice", "Niger"],
+                        ["2", "Minerva Hooper", "Curaçao"],
+                        ["3", "Sage Rodriguez", "Netherlands"],
+                        ["4", "Philip Chaney", "Korea, South"]
+                      ]}
+                    />
+                  </CardBody>
+                </Card>
+              </GridItem>
+            </GridContainer>
+          </div>
+          :
+          <div>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={6}>
+                <Card chart>
+                  <CardHeader style={{ height: "500px", textAlign: "center" }} color="info">
+                    <iframe frameBorder="0" width="500px" height="500px" src="http://127.0.0.1:8000/graficas/uno">
+                      <p>Your browser does not support iframes.</p>
+                    </iframe>
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>Estimación tendencia de productos a través de los años</h4>
+                    <p className={classes.cardCategory}>
+                      Rendimiento de las exportaciones
+                                </p>
+                  </CardBody>
+                  <CardFooter chart>
+                    <div className={classes.stats}>
+                      <AccessTime /> Ultima consulta de tendencia realizada
+                </div>
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <Card chart>
+                  <CardHeader color="success">
+                    {/* <ChartistGraph
+                      className="ct-chart"
+                      data={completedTasksChart.data}
+                      type="Line"
+                      options={completedTasksChart.options}
+                      listener={completedTasksChart.animation}
+                    /> */}
+                    <img style={{ maxWidth: "500px", maxHeight: "493px" }} src={colombia} />
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>Mapa departamentos de Colombia</h4>
+                    <p className={classes.cardCategory}>
+                      Departamentos con mayor exportación de acuerdo a los productos seleccionados:
+                </p>
+                    <List dense={true}>
+                      <ListItem>
+                        <ListItemText
+                          primary="Meta"
+                        />
+                        <ListItemText
+                          primary="Guaviare"
+                        />
+                        <ListItemText
+                          primary="Caquetá"
+                        />
+                      </ListItem>
+                    </List>
+                  </CardBody>
+                </Card>
+              </GridItem>
+            </GridContainer>
+
+          </div>
+        }
       </div>
     );
   }

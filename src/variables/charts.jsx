@@ -72,20 +72,22 @@ const dailySalesChart = {
 const emailsSubscriptionChart = {
   data: {
     labels: [
-      "Jan",
+      "Ene",
       "Feb",
       "Mar",
-      "Apr",
-      "Mai",
+      "Abr",
+      "May",
       "Jun",
       "Jul",
-      "Aug",
+      "Ago",
       "Sep",
       "Oct",
       "Nov",
-      "Dec"
+      "Dic"
     ],
-    series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+    series: [
+      [768, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+    ]
   },
   options: {
     axisX: {

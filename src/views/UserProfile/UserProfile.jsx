@@ -42,12 +42,12 @@ function UserProfile(props) {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-              <p className={classes.cardCategoryWhite}>Complete your profile</p>
+              <h4 className={classes.cardTitleWhite}>Editar Perfil</h4>
+              <p className={classes.cardCategoryWhite}>Completa tu perfil</p>
             </CardHeader>
             <CardBody>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={5}>
+                {/* <GridItem xs={12} sm={12} md={5}>
                   <CustomInput
                     labelText="Company (disabled)"
                     id="company-disabled"
@@ -58,76 +58,84 @@ function UserProfile(props) {
                       disabled: true
                     }}
                   />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
+                </GridItem> */}
+                <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="Username"
+                    labelText="Usuario"
                     id="username"
+                    
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "pepe02"}}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
                     labelText="Email address"
                     id="email-address"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "pepe02@gmail.com"}}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="First Name"
+                    labelText="Nombre"
                     id="first-name"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "Pepito"}}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="Last Name"
+                    labelText="Apellidos"
                     id="last-name"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "Perez"}}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="City"
+                    labelText="Ciudad"
                     id="city"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "Bogotá"}}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="Country"
+                    labelText="País"
                     id="country"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "Colombia"}}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="Postal Code"
+                    labelText="Codigo Postal"
                     id="postal-code"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    inputProps={{value: "123456"}}
                   />
                 </GridItem>
               </GridContainer>
-              <GridContainer>
+              {/* <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
                   <CustomInput
@@ -142,31 +150,26 @@ function UserProfile(props) {
                     }}
                   />
                 </GridItem>
-              </GridContainer>
+              </GridContainer> */}
             </CardBody>
             <CardFooter>
-              <Button color="primary">Update Profile</Button>
+              <Button color="primary">Actualizar Perfil</Button>
             </CardFooter>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card profile>
-            <CardAvatar profile>
+            {/* <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
                 <img src={avatar} alt="..." />
               </a>
-            </CardAvatar>
+            </CardAvatar> */}
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
+              {/* <h6 className={classes.cardCategory}>Administrador</h6> */}
+              <h4 className={classes.cardTitle}>Pepito Perez</h4>
               <p className={classes.description}>
-                Don't be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
-              <Button color="primary" round>
-                Follow
-              </Button>
             </CardBody>
           </Card>
         </GridItem>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import classNames from "classnames";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -21,9 +22,15 @@ import Button from "components/CustomButtons/Button.jsx";
 import headerLinksStyle from "assets/jss/material-dashboard-react/components/headerLinksStyle.jsx";
 
 class HeaderLinks extends React.Component {
-  state = {
-    open: false
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      redirectToReferrer: false
+    };
+  }
+
   handleToggle = () => {
     this.setState(state => ({ open: !state.open }));
   };
@@ -38,7 +45,9 @@ class HeaderLinks extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, redirectToReferrer } = this.state;
+    let { from } =  { from: { pathname: "/login" } };
+    if (redirectToReferrer) return <Redirect to={from} />;
     return (
       <div>
         <div className={classes.searchWrapper}>
@@ -69,7 +78,7 @@ class HeaderLinks extends React.Component {
             <p className={classes.linkText}>Dashboard</p>
           </Hidden>
         </Button>
-        <div className={classes.manager}>
+        {/* <div className={classes.manager}>
           <Button
             buttonRef={node => {
               this.anchorEl = node;
@@ -149,8 +158,66 @@ class HeaderLinks extends React.Component {
               </Grow>
             )}
           </Poppers>
+        </div> */}
+        <div className={classes.manager}>
+          <Button
+            buttonRef={node => {
+              this.anchorEl = node;
+            }}
+            color={window.innerWidth > 959 ? "transparent" : "white"}
+            justIcon={window.innerWidth > 959}
+            simple={!(window.innerWidth > 959)}
+            aria-owns={open ? "menu-list-grow" : null}
+            aria-haspopup="true"
+            onClick={this.handleToggle}
+            className={classes.buttonLink}
+          >
+            <Person className={classes.icons} />
+            <Hidden mdUp implementation="css">
+              <p className={classes.linkText}>Profile</p>
+            </Hidden>
+          </Button>
+          <Poppers
+            open={open}
+            anchorEl={this.anchorEl}
+            transition
+            disablePortal
+            className={
+              classNames({ [classes.popperClose]: !open }) +
+              " " +
+              classes.pooperNav
+            }
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id="menu-list-grow"
+                style={{
+                  transformOrigin:
+                    placement === "bottom" ? "center top" : "center bottom"
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={this.handleClose}>
+                    <MenuList role="menu">
+                      <MenuItem
+                        onClick={(e) => {
+                          this.setState({ redirectToReferrer: true });
+                          this.handleClose(e)
+                        }}
+                        className={classes.dropdownItem}
+                      >
+                        Cerrar sesión
+                      </MenuItem>
+
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Poppers>
         </div>
-        <Button
+        {/* <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
@@ -161,7 +228,7 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
-        </Button>
+        </Button> */}
       </div>
     );
   }
